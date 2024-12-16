@@ -1,0 +1,84 @@
+host: DESKTOP-ADLEJL2
+Building DAG of jobs...
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+create_first        3
+total               4
+
+Select jobs to execute...
+Execute 3 jobs...
+
+[Mon Dec 16 15:22:10 2024]
+localrule create_first:
+    input: user_input.xlsx, intermediate_data/small_seurat_101_obj.rds
+    output: intermediate_data/filtered_small_seurat_101_obj.rds, output/reports/filtered_small_seurat_101_obj.html
+    jobid: 1
+    reason: Code has changed since last execution
+    wildcards: size=101
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+
+[Mon Dec 16 15:22:10 2024]
+localrule create_first:
+    input: user_input.xlsx, intermediate_data/small_seurat_102_obj.rds
+    output: intermediate_data/filtered_small_seurat_102_obj.rds, output/reports/filtered_small_seurat_102_obj.html
+    jobid: 2
+    reason: Missing output files: intermediate_data/filtered_small_seurat_102_obj.rds, output/reports/filtered_small_seurat_102_obj.html
+    wildcards: size=102
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+
+[Mon Dec 16 15:22:10 2024]
+localrule create_first:
+    input: user_input.xlsx, intermediate_data/small_seurat_103_obj.rds
+    output: intermediate_data/filtered_small_seurat_103_obj.rds, output/reports/filtered_small_seurat_103_obj.html
+    jobid: 3
+    reason: Missing output files: intermediate_data/filtered_small_seurat_103_obj.rds, output/reports/filtered_small_seurat_103_obj.html
+    wildcards: size=103
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+[Mon Dec 16 15:22:10 2024]
+[Mon Dec 16 15:22:10 2024]
+Error in rule create_first:
+    jobid: 2
+    input: user_input.xlsx, intermediate_data/small_seurat_102_obj.rds
+    output: intermediate_data/filtered_small_seurat_102_obj.rds, output/reports/filtered_small_seurat_102_obj.html
+    shell:
+        
+        cp 2_second.qmd 102_second_temp.qmd &&         quarto 102_second_temp.qmd  -P downsample_size=102         -o filtered_small_seurat_102_obj.html
+        rm 102_second_temp.qmd 
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Error in rule create_first:
+    jobid: 3
+    input: user_input.xlsx, intermediate_data/small_seurat_103_obj.rds
+    output: intermediate_data/filtered_small_seurat_103_obj.rds, output/reports/filtered_small_seurat_103_obj.html
+    shell:
+        
+        cp 2_second.qmd 103_second_temp.qmd &&         quarto 103_second_temp.qmd  -P downsample_size=103         -o filtered_small_seurat_103_obj.html
+        rm 103_second_temp.qmd 
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Mon Dec 16 15:22:10 2024]
+Error in rule create_first:
+    jobid: 1
+    input: user_input.xlsx, intermediate_data/small_seurat_101_obj.rds
+    output: intermediate_data/filtered_small_seurat_101_obj.rds, output/reports/filtered_small_seurat_101_obj.html
+    shell:
+        
+        cp 2_second.qmd 101_second_temp.qmd &&         quarto 101_second_temp.qmd  -P downsample_size=101         -o filtered_small_seurat_101_obj.html
+        rm 101_second_temp.qmd 
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake\log\2024-12-16T152209.976641.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

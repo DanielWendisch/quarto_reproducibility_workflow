@@ -1,4 +1,4 @@
-sizes = [103]
+sizes = [101, 102, 103]
 
 # output dir is specidied in _quarto.yml
 rule all:
@@ -9,11 +9,17 @@ rule all:
 
 rule downsample:
     input:
-        "../../raw_data/wendisch_et_al_final/oli_github/Monocytes.Rds"
+        "../../raw_data/mock_data/Monocytes_{size}.Rds"
     output: 
         "intermediate_data/small_seurat_{size}_obj.rds"
     shell:
-        "quarto render 1_first.qmd -P downsample_size={wildcards.size}"
+      """
+      cp 1_first.qmd {wildcards.size}_first_temp.qmd && \
+      quarto render {wildcards.size}_first_temp.qmd -P downsample_size={wildcards.size} \
+      -o small_seurat_{wildcards.size}_obj.html && \
+      rm {wildcards.size}_first_temp.qmd 
+
+      """
 
 rule create_first:
     input: 
@@ -21,13 +27,15 @@ rule create_first:
         precomputed="intermediate_data/small_seurat_{size}_obj.rds"
     output:
         rds="intermediate_data/filtered_small_seurat_{size}_obj.rds",
-        html_name="output/reports/filtered_small_seurat_{size}_obj.html",
+        html_name="output/reports/filtered_small_seurat_{size}_obj.html"
         #temp_dir=temp(directory("foo_{size}"))
 
     shell: 
         """
-        quarto render 2_second.qmd -P downsample_size={wildcards.size} \
-        -o filtered_small_seurat_{wildcards.size}_obj.html
-        
+        cp 2_second.qmd {wildcards.size}_second_temp.qmd && \
+        quarto render {wildcards.size}_second_temp.qmd  -P downsample_size={wildcards.size} \
+        -o filtered_small_seurat_{wildcards.size}_obj.html && \
+        rm {wildcards.size}_second_temp.qmd 
         """
+
 

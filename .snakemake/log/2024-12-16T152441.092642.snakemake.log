@@ -1,0 +1,8 @@
+host: DESKTOP-ADLEJL2
+Building DAG of jobs...
+MissingInputException in rule downsample in file C:\Users\Danne\R_projects\quarto_reproducibility_workflow\Snakefile, line 10:
+Missing input files for rule downsample:
+    output: intermediate_data/small_seurat_101_obj.rds
+    wildcards: size=101
+    affected files:
+        ../../raw_data/wendisch_et_al_final/oli_github/Monocytes_101.Rds

@@ -1,0 +1,33 @@
+host: DESKTOP-ADLEJL2
+Building DAG of jobs...
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+create_first        1
+downsample          1
+total               3
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Dec 16 14:14:29 2024]
+localrule downsample:
+    input: ../../raw_data/wendisch_et_al_final/oli_github/Monocytes.Rds
+    output: intermediate_data/small_seurat_103_obj.rds
+    jobid: 2
+    reason: Code has changed since last execution
+    wildcards: size=103
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule downsample in file C:\Users\Danne\R_projects\quarto_reproducibility_workflow\Snakefile, line 10:
+Job 2  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+intermediate_data/small_seurat_103_obj.rds (missing locally, parent dir contents: filtered_small_seurat_102_obj.rds, filtered_small_seurat_103_obj.rds, small_seurat_102_obj.rds)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake\log\2024-12-16T141428.994273.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

@@ -4,7 +4,7 @@ format:
   html:
     embed-resources: true
 params:
-  downsample_size: 100
+  downsample_size: 101
 ---
 
 
@@ -75,9 +75,8 @@ downsample_seurat <- function(seurat_obj, cells_per_ident = 100) {
 filepath <- if (is_snakemake) snakemake@input else {
   here("..", "..",
        "raw_data",
-       "wendisch_et_al_final",
-       "oli_github", 
-       "Monocytes.Rds")} 
+       "mock_data",
+       paste0("Monocytes_", as.character(params$downsample_size),".Rds"))} 
 
 dat <- readRDS(filepath)
 

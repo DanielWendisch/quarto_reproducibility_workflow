@@ -1,0 +1,8 @@
+host: DESKTOP-ADLEJL2
+Building DAG of jobs...
+MissingInputException in rule create_first in file C:\Users\Danne\R_projects\quarto_reproducibility_workflow\Snakefile, line 22:
+Missing input files for rule create_first:
+    output: intermediate_data/filtered_small_seurat_103_obj.rds, output/reports/filtered_small_seurat_103_obj.html
+    wildcards: size=103
+    affected files:
+        user_input.xlsx

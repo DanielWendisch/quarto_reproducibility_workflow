@@ -1,0 +1,43 @@
+host: DESKTOP-ADLEJL2
+Building DAG of jobs...
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+create_first        1
+downsample          1
+total               3
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Dec 16 12:10:12 2024]
+localrule downsample:
+    input: ../../raw_data/wendisch_et_al_final/oli_github/Monocytes.Rds
+    output: intermediate_data/small_seurat_103_obj.rds
+    jobid: 2
+    reason: Missing output files: intermediate_data/small_seurat_103_obj.rds; Code has changed since last execution
+    wildcards: size=103
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+[Mon Dec 16 12:10:12 2024]
+Error in rule downsample:
+    jobid: 2
+    input: ../../raw_data/wendisch_et_al_final/oli_github/Monocytes.Rds
+    output: intermediate_data/small_seurat_103_obj.rds
+    shell:
+        
+      cp 1_first.qmd 103_first.qmd # quarto doesnt render parallely
+      quarto 103_first.qmd -P downsample_size=103
+      -o small_seurat_103_obj.html
+      rm 103_first.qmd 
+      
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake\log\2024-12-16T121012.101956.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
