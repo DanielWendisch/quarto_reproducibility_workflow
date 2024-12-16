@@ -1,0 +1,85 @@
+---
+title: "2_second"
+format: 
+  dashboard:
+   orientation: rows
+   embed-resources: true
+
+params:
+  downsample_size: 103
+---
+
+```{r}
+library(Seurat)
+library(tidyseurat)
+library(tidyverse)
+library(here)
+library(readxl)
+```
+
+```{r}
+specs <- read_excel(path = here("user_input.xlsx"))
+downsample_size <- params$downsample_size
+file_name_input <- paste("small_seurat",
+                   as.character(downsample_size),
+                   "obj.rds", sep = "_")
+
+obj <- read_rds(here("intermediate_data", file_name_input))
+```
+
+
+```{r}
+
+
+filter_variable<- specs |>
+  filter(size==downsample_size) |>
+  pull("filter_variable" )|>
+  as.character()
+
+cat(paste("Filter variable:", filter_variable))
+
+filter_value<- specs |> filter(size==downsample_size) |> pull("value_variable" )|> as.character()
+cat(paste("Filter_value:", filter_value))
+
+```
+
+
+```{r}
+#filtered_obj <- obj |> filter(!!sym(filter_variable) == filter_value)
+#filtered_obj <- obj |> filter({{filter_variable}} == filter_value)
+filtered_obj <- obj |> filter(.data[[filter_variable]] == filter_value)
+
+file_name_filtered <- paste("filtered",
+                            "small_seurat",
+                   as.character(downsample_size),
+                   "obj.rds", sep = "_")
+
+write_rds(filtered_obj,
+          here("intermediate_data",
+               file_name_filtered))
+```
+
+## Row width={40%}
+```{r}
+
+DimPlot(object = obj)
+```
+### Row {.tabset}
+
+```{r}
+#| title: original
+
+DimPlot(object = obj)
+```
+
+```{r}
+#| title: filtered
+
+DimPlot(object = filtered_obj)
+
+```
+
+## Row width{.fill}
+```{r}
+
+```

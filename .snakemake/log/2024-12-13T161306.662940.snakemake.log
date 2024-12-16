@@ -1,0 +1,32 @@
+host: DESKTOP-ADLEJL2
+Building DAG of jobs...
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+create_first        2
+total               3
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Dec 13 16:13:06 2024]
+localrule create_first:
+    input: user_input.xlsx, intermediate_data/small_seurat_103_obj.rds
+    output: intermediate_data/filtered_small_seurat_103_obj.rds
+    jobid: 5
+    reason: Missing output files: intermediate_data/filtered_small_seurat_103_obj.rds
+    wildcards: size=103
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+Waiting at most 180 seconds for missing files.
+MissingOutputException in rule create_first in file C:\Users\Danne\R_projects\quarto_reproducibility_workflow\Snakefile, line 11:
+Job 5  completed successfully, but some output files are missing. Missing files after 180 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+intermediate_data/filtered_small_seurat_103_obj.rds (missing locally, parent dir contents: filtered_small_seurat_100_obj.rds, filtered_small_seurat_101_obj.rds, small_seurat_100_obj.rds, small_seurat_101_obj.rds, small_seurat_102_obj.rds, small_seurat_103_obj.rds, small_seurat_120_obj.rds, small_seurat_155_obj.rds, small_seurat_62_obj.rds)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake\log\2024-12-13T161306.662940.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

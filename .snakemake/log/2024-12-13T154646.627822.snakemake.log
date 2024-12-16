@@ -1,0 +1,5 @@
+host: DESKTOP-ADLEJL2
+Building DAG of jobs...
+WildcardError in rule create_first in file C:\Users\Danne\R_projects\quarto_reproducibility_workflow\Snakefile, line 12:
+Wildcards in input files cannot be determined from output files: (rule create_first, line 32, C:\Users\Danne\R_projects\quarto_reproducibility_workflow\Snakefile)
+'size'

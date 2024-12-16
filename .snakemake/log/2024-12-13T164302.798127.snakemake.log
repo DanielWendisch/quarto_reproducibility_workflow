@@ -1,0 +1,83 @@
+host: DESKTOP-ADLEJL2
+Building DAG of jobs...
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+create_first        3
+downsample          3
+total               7
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Dec 13 16:43:02 2024]
+localrule downsample:
+    input: ../../raw_data/wendisch_et_al_final/oli_github/Monocytes.Rds
+    output: intermediate_data/small_seurat_103_obj.rds
+    jobid: 6
+    reason: Missing output files: intermediate_data/small_seurat_103_obj.rds; Code has changed since last execution
+    wildcards: size=103
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+[Fri Dec 13 16:43:21 2024]
+Finished job 6.
+1 of 7 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Dec 13 16:43:21 2024]
+localrule downsample:
+    input: ../../raw_data/wendisch_et_al_final/oli_github/Monocytes.Rds
+    output: intermediate_data/small_seurat_101_obj.rds
+    jobid: 2
+    reason: Missing output files: intermediate_data/small_seurat_101_obj.rds; Code has changed since last execution
+    wildcards: size=101
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+[Fri Dec 13 16:43:38 2024]
+Finished job 2.
+2 of 7 steps (29%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Dec 13 16:43:38 2024]
+localrule downsample:
+    input: ../../raw_data/wendisch_et_al_final/oli_github/Monocytes.Rds
+    output: intermediate_data/small_seurat_102_obj.rds
+    jobid: 4
+    reason: Missing output files: intermediate_data/small_seurat_102_obj.rds; Code has changed since last execution
+    wildcards: size=102
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+[Fri Dec 13 16:43:56 2024]
+Finished job 4.
+3 of 7 steps (43%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Dec 13 16:43:56 2024]
+localrule create_first:
+    input: user_input.xlsx, intermediate_data/small_seurat_102_obj.rds
+    output: intermediate_data/filtered_small_seurat_102_obj.rds
+    jobid: 3
+    reason: Missing output files: intermediate_data/filtered_small_seurat_102_obj.rds; Input files updated by another job: intermediate_data/small_seurat_102_obj.rds
+    wildcards: size=102
+    resources: tmpdir=C:\Users\Danne\AppData\Local\Temp
+
+[Fri Dec 13 16:43:56 2024]
+Error in rule create_first:
+    jobid: 3
+    input: user_input.xlsx, intermediate_data/small_seurat_102_obj.rds
+    output: intermediate_data/filtered_small_seurat_102_obj.rds
+    shell:
+        quarto render 2_second.qmd -P downsample_size=102 -o intermediate_data/filtered_small_seurat_102_obj.rds
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake\log\2024-12-13T164302.798127.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

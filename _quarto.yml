@@ -1,0 +1,9 @@
+project:
+  type: default
+  output-dir: output/reports
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
